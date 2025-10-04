@@ -1,41 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Dark Green Gradient Access Management Table</title>
-    <link rel="stylesheet" href="style.css">
+    <title>TrackMint - Expense Tracking Simplified</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Light Green Palette (based on #edffcc) */
+        :root {
+            --color-primary: #edffcc;       /* Main Light Green Background (User's request) */
+            --color-card: #ffffff;          /* Card Background (Clean White) */
+            --color-dark-text: #1a202c;     /* Dark Text (For readability on light background) */
+            --color-main-green: #1f6d3a;    /* Rich Dark Green (Primary Accent/Headers) */
+            --color-bright-green: #34d399;  /* Bright Mint/Emerald (Buttons/Highlights) */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-primary);
+        }
+        /* Custom Utility Classes */
+        .bg-primary { background-color: var(--color-primary); }
+        .bg-card { background-color: var(--color-card); }
+        .text-dark { color: var(--color-dark-text); }
+        .text-accent-main { color: var(--color-main-green); } 
+        .bg-accent-bright { background-color: var(--color-bright-green); }
+        .border-accent-main { border-color: var(--color-main-green); }
+        .shadow-accent-bright { --tw-shadow-color: var(--color-bright-green); }
+        .bg-footer { background-color: #e0f1bb; /* Slightly darker than primary for contrast */ }
+        .border-nav { border-color: #d8e5c1; } /* Subtle border for nav bar */
+
+        /* Updated logo styling for the light background */
+        .logo-container {
+            /* Since the original logo image might have a black background, this ensures it blends a little better */
+            padding: 2px;
+            background: rgba(255, 255, 255, 0.5); 
+            border-radius: 4px;
+        }
+    </style>
 </head>
+<body class="bg-primary text-dark min-h-screen antialiased">
 
-<body onload="loadTableData()">
-    <div class="nav">
-        <img src="asstes/TrackMintSquare.svg" alt="" width="100px">
-        <h2>User Access Management | Secure Portal</h2>
-    </div>
-    <div id="feedbackMessage"></div>
+    <!-- Navigation Bar -->
+    <nav class="bg-primary shadow-lg border-b border-nav sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo and Company Name -->
+                <div class="flex items-center">
+                    <!-- Image tag for the uploaded logo -->
+                    <div class="logo-container">
+                        <img src="logo2.png" alt="TrackMint Logo" class="h-8 w-8 mr-3 object-contain">
+                    </div>
+                    
+                    <span class="text-2xl font-extrabold text-accent-main">TrackMint</span>
+                </div>
 
-    <div class="btn-container">
-        <button class="storage-btn" onclick="saveTableData(event)">Save All Data</button>
-        <button class="storage-btn" onclick="addNewRow()"> Add New User</button>
-    </div>
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex space-x-6 text-sm font-medium">
+                    <a href="#" class="text-dark hover:text-accent-main p-2 rounded-lg transition duration-200">About Us</a>
+                    <a href="#" class="text-dark hover:text-accent-main p-2 rounded-lg transition duration-200">Employee</a>
+                    <a href="#" class="text-dark hover:text-accent-main p-2 rounded-lg transition duration-200">Manager</a>
+                    <a href="#" class="bg-accent-bright text-white px-4 py-2 rounded-full font-semibold hover:bg-opacity-90 transition duration-300 shadow-lg shadow-accent-bright/40">Login Page</a>
+                </div>
 
-    <div class="table-container">
-        <table id="userTable">
-            <thead>
-                <tr>
-                    <th>User</th>
-                    <th>Role</th>
-                    <th>Manager</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="userTableBody">
-            </tbody>
-        </table>
-    </div>
-    <script src="script.js"></script>
+                <!-- Mobile Menu Button (Hamburger) -->
+                <div class="md:hidden">
+                    <button class="text-dark hover:text-accent-main p-2 rounded-lg focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+
+        <!-- Hero Section -->
+        <header class="text-center mb-16">
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter text-dark mb-6">
+                <span class="text-accent-main">Effortless</span> Expense Tracking.
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto mb-10">
+                TrackMint revolutionizes how your business handles expenses, ensuring compliance and clarity, so you can focus on growth.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="bg-accent-bright text-white px-8 py-3 rounded-full text-lg font-bold hover:shadow-xl hover:bg-opacity-90 transition duration-300 shadow-xl shadow-accent-bright/50">
+                    Get Started Now
+                </a>
+                <a href="#" class="border border-accent-main text-accent-main px-8 py-3 rounded-full text-lg font-semibold hover:bg-accent-bright/10 transition duration-300">
+                    See Features
+                </a>
+            </div>
+        </header>
+
+        <!-- Value Proposition / Tagline Section -->
+        <section class="mt-20">
+            <h2 class="text-4xl font-bold text-center text-dark mb-12">Why Choose TrackMint?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Tagline 1: Managers & Teams -->
+                <div class="bg-card p-6 rounded-xl shadow-lg border-t-4 border-accent-main transition transform hover:scale-[1.02] duration-300 ease-in-out">
+                    <h3 class="text-2xl font-bold text-accent-main mb-3 flex items-center">
+                        <span class="mr-2">🌱</span> Simplified Management
+                    </h3>
+                    <p class="text-dark text-lg">
+                        *For managers. For teams. Simplified.* <br>
+                        Streamline approvals and workflows, cutting down on administrative headaches for everyone involved.
+                    </p>
+                </div>
+
+                <!-- Tagline 2: Effortless Tracking -->
+                <div class="bg-card p-6 rounded-xl shadow-lg border-t-4 border-accent-main transition transform hover:scale-[1.02] duration-300 ease-in-out">
+                    <h3 class="text-2xl font-bold text-accent-main mb-3 flex items-center">
+                        <span class="mr-2">💸</span> Made Effortless
+                    </h3>
+                    <p class="text-dark text-lg">
+                        *Expense tracking made effortless.* <br>
+                        Capture receipts, categorize transactions, and submit reports in seconds, not hours.
+                    </p>
+                </div>
+
+                <!-- Tagline 3: Smart Workflow -->
+                <div class="bg-card p-6 rounded-xl shadow-lg border-t-4 border-accent-main transition transform hover:scale-[1.02] duration-300 ease-in-out">
+                    <h3 class="text-2xl font-bold text-accent-main mb-3 flex items-center">
+                        <span class="mr-2">💡</span> Smart Workflow
+                    </h3>
+                    <p class="text-dark text-lg">
+                        *Smart tracking. Simple workflow.* <br>
+                        Automated categorization and real-time data integration means less manual work and fewer errors.
+                    </p>
+                </div>
+                
+                <!-- Tagline 4: Transparency -->
+                <div class="bg-card p-6 rounded-xl shadow-lg border-t-4 border-accent-main transition transform hover:scale-[1.02] duration-300 ease-in-out">
+                    <h3 class="text-2xl font-bold text-accent-main mb-3 flex items-center">
+                        <span class="mr-2">👁</span> Building Trust
+                    </h3>
+                    <p class="text-dark text-lg">
+                        *Transparency that grows trust.* <br>
+                        Instant visibility into spending across the organization fosters accountability and better budgeting.
+                    </p>
+                </div>
+                
+                <!-- Tagline 5: Under Control -->
+                <div class="bg-card p-6 rounded-xl shadow-lg border-t-4 border-accent-main transition transform hover:scale-[1.02] duration-300 ease-in-out lg:col-start-2">
+                    <h3 class="text-2xl font-bold text-accent-main mb-3 flex items-center">
+                        <span class="mr-2">🔒</span> Total Control
+                    </h3>
+                    <p class="text-dark text-lg">
+                        *Your expenses, under control.* <br>
+                        Set budgets, enforce policies, and detect fraudulent activity before it becomes a problem.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-footer mt-20 py-8 border-t border-accent-main/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-dark">
+            <p>&copy; 2025 TrackMint. All rights reserved.</p>
+            <div class="mt-2 text-sm space-x-4">
+                <a href="#" class="hover:text-accent-main transition">Privacy Policy</a>
+                <span class="text-gray-500">|</span>
+                <a href="#" class="hover:text-accent-main transition">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
 </body>
-
 </html>
